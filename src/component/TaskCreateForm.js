@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './style.css'
 import ShowList from './ShowList';
-import $ from 'jquery';
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 
 function TaskCreateForm() {
@@ -16,6 +15,17 @@ function TaskCreateForm() {
         priority: 'Low',
         complete: "incomplete"
     });
+    // Create an initial task when run for the first time with empty taskslist
+    if (JSON.parse(localStorage.getItem('tasks')) == null) {
+        const initTask = [{
+            title: 'initial-title',
+            description: 'initial-description',
+            dueDate: new Date().toISOString(),
+            priority: 'Low',
+            complete: "incomplete"
+        }];
+        localStorage.setItem('tasks', JSON.stringify(initTask));
+    }
 
     useEffect(() => {
         const initialTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -23,7 +33,6 @@ function TaskCreateForm() {
     }, []);
 
     const handleAddTask = () => {
-        // const initialTasks = JSON.parse(localStorage.getItem('tasks')) || [];
         if (editItem) {
             const updatedTasks = tasks.map((elem) => {
                 if (elem.id === editItemID) {
@@ -87,59 +96,6 @@ function TaskCreateForm() {
     const handleShow = () => setShow(true);
 
     return (
-        // <div className='taskStyle'>
-        //     <div className='row'>
-        //         <div className='col-sm-12 col-md-4 col-lg-4 formStyle'>
-        //             <div className='form form2'>
-        //                 <h5>Task Manager</h5>
-        //                 <div>
-        //                     <label>Title</label>
-        //                     <input type='text' className='form-control' value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}></input>
-        //                 </div>
-        //                 <div>
-        //                     <label>Priority</label>
-        //                     <select value={newTask.priority} className='form-control' onChange={(e) => setNewTask({ ...newTask, priority: e.target.value })}>
-        //                         <option value="High">High</option>
-        //                         <option value="Medium">Medium</option>
-        //                         <option value="Low">Low</option>
-        //                     </select>
-        //                 </div>
-        //                 <div>
-        //                     <label>Due Date</label>
-        //                     <input type='date' className='form-control' value={newTask.dueDate} onChange={(e) => setNewTask({ ...newTask, dueDate: e.target.value })}></input>
-        //                 </div>
-        //                 {
-        //                     editItem &&
-        //                     <div>
-        //                         <label>complete</label>
-        //                         <select
-        //                             value={newTask.complete}
-        //                             className='form-control'
-        //                             onChange={(e) => setNewTask({ ...newTask, complete: e.target.value })}
-        //                         >
-        //                             <option value="complete">Complete</option>
-        //                             <option value="incomplete">Incomplete</option>
-        //                         </select>
-        //                     </div>
-        //                 }
-        //                 <div>
-        //                     <label>Description</label>
-        //                     <textarea className='form-control textareaField' value={newTask.description} onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}></textarea>
-        //                 </div>
-        //                 <div className='btn'>
-        //                     <button onClick={handleAddTask}> {editItem ? "Update Task" : "Add Task"}</button>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //         <div className='col-sm-12 col-md-8 col-lg-8 tableStyle'>
-        //             {(tasks !== "" && tasks.length !== 0) ? 
-        //             <ShowList List={tasks} editData={editHandle} deleteData={deleteHandle} /> 
-        //             : <h5>No Task Available</h5>}
-        //         </div>
-
-        //     </div>
-        // </div>
-
         <>
             <Modal show={show} onHide={handleClose}>
 

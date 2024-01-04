@@ -1,16 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./cards.css"
-import { AiFillEdit } from "react-icons/ai";
-import { MdDelete } from "react-icons/md";
 
 
 const Cards = (props) => {
-
-    function showHideHandler(params) {
-        let elem = document.getElementById("dot-box")
-        elem.classList.toggle("hide")
-    }
-
     return (
         <>
             {
@@ -22,9 +14,9 @@ const Cards = (props) => {
                             <div style={{ display: "flex", justifyContent: "space-between" }}>
                                 <span className="tags" style={{
                                     backgroundColor:
-                                        (props.data.priority == "Medium")
+                                        (props.data.priority === "Medium")
                                             ? "#336699"
-                                            : (props.data.priority == "High") ? "#FF0000" : "#999999"
+                                            : (props.data.priority === "High") ? "#FF0000" : "#999999"
                                 }}
                                 >{props.data.priority}</span>
 
