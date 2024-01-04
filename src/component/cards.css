@@ -1,0 +1,65 @@
+.des {
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines to show before truncating */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.date {
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+}
+
+.tags {
+    font-size: 12px;
+    background-color: #999999;
+    padding: 1px 8px;
+    border-radius: 2px;
+    color: white;
+}
+
+.card-sec {
+    background-color: #ededed;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 2px;
+    /* min-width: 200px; */
+    padding-bottom: 20px;
+}
+
+.card-body2 {
+    padding: 10px;
+    position: relative;
+    padding-top: 0px;
+    margin-top: 12px;
+    min-height: 100px !important;
+}
+
+.card-body {
+    padding: 10px;
+    position: relative;
+    padding-top: 0px;
+    margin-top: 12px;
+}
+
+
+
+.hide {
+    visibility: hidden;
+}
+
+.dot {
+    margin-top: -4px;
+    cursor: pointer;
+}
+
+.action-box {
+    display: flex;
+    justify-content: end;
+    margin-top: -35px;
+    position: relative;
+}
